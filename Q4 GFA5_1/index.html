@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shape Generator</title>
+</head>
+<body>
+  <h2>Shape Generator</h2>
+  <button onclick="ShapeGenerator()">Generate Shape</button>
+  <div id="output"></div>
+
+  <script>
+
+    function Triangle(number) {
+      let output = document.getElementById("output");
+      output.innerHTML = `Number inputted: ${number}<br>`;
+      for (let a = number; a > 0; a--) {
+        for (let b = a; b > 0; b--) {
+          output.innerHTML += `${a} `;
+        }
+        output.innerHTML += "<br>";
+      }
+    }
+
+    function Regtangle(number) {
+      let output = document.getElementById("output");
+      output.innerHTML = `Number inputted: ${number}<br>`;
+      for (let a = number; a > 0; a--) {
+        for (let b = 0; b< number; b++) {
+          output.innerHTML += `${a} `;
+        }
+        output.innerHTML += "<br>";
+      }
+    }
+
+    function ShapeGenerator() {
+      let number = getNumberInput();
+      if (number % 2 === 0) {
+        Triangle(number);
+      } else {
+        Regtangle(number);
+      }
+    }
+    function isNumeric(value) {
+      return !isNaN(parseFloat(value)) && isFinite(value);
+    }
+
+    function getNumberInput() {
+      let number;
+      do {
+        number = prompt("Please enter a number:");
+      } while (!isNumeric(number));
+      return parseInt(number);
+    }
+    
+  </script>
+</body>
+</html>
